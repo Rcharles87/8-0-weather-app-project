@@ -1,0 +1,36 @@
+#main {
+    display: grid;
+    grid-template-areas: 
+    "header header header header"
+    "display display display history";
+    grid-gap: 5px;
+    max-width: 800px;
+    width: 75%;
+    margin: 0 auto;
+}
+#main > *{
+    border: 1px solid black;
+
+ }
+
+#weather-input{
+    grid-area: wInput;
+}
+
+#header {
+    grid-area: header;
+   text-align: center;
+   
+}
+
+div.display{
+    grid-area: display;
+    text-align: center;
+    padding-top: 25px;
+
+}
+
+div.history {
+    grid-area: history;
+}
+
