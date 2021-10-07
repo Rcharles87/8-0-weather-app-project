@@ -8,10 +8,17 @@
     width: 75%;
     margin: 0 auto;
 }
-#main > *{
+
+/* #main > *{
     border: 1px solid black;
 
- }
+ } */
+
+h1, #label{
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
 
 #weather-input{
     grid-area: wInput;
@@ -20,17 +27,61 @@
 #header {
     grid-area: header;
    text-align: center;
+   background-color: rgb(34, 118, 139);
+   border: 3px solid black;
+   padding-bottom: 25px;
    
 }
 
 div.display{
     grid-area: display;
+    border: 1px solid rgb(34, 118, 139);
+    background-color: rgb(233, 232, 232);
     text-align: center;
-    padding-top: 25px;
-
+    padding-top: 10px;
+    margin-left: 10px;
+    padding-bottom: 10px;
+    line-height: 26pt;
 }
 
 div.history {
     grid-area: history;
 }
 
+#recent{
+    text-align: center;
+}
+
+.future-forcast{
+    display: grid;
+    grid-template-areas: 
+    "today tomorrow day-after .";
+    margin: 25px;
+    text-align: center;
+    grid-gap: 5px;
+}
+
+#today-temp{
+grid-area: today;
+line-height: 26pt;
+font-family: Arial, Helvetica, sans-serif;
+
+}
+
+#tomorrow-temp{
+grid-area: tomorrow;
+line-height: 26pt;
+font-family: Arial, Helvetica, sans-serif;
+
+}
+
+#day-after-temp{
+ grid-area: day-after;
+ line-height: 26pt;
+ font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.average, .max, .min{
+    font-family: Arial, Helvetica, sans-serif;
+}

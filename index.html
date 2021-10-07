@@ -14,21 +14,27 @@
 
             <h1>Weather App</h1>
             <form id="weather-input">
-                <label for="">Pick a Location</label>
-                <input type="text"/>
-                <input type="submit" value="Get Weather"/>
-                
+                <label for="zip-input" id="label">Pick a Location</label>
+                <input type="text" id="zip-input"/>
+                <input type="submit" value="Get Weather"/>  
             </form>
         </div>
+
+
         <div class="display">
             <div>Choose a location to view weather.</div>
-        </div>
+        </div>  
+
+
         <div class="history">
             <div>
                 <h3>Previous Searches</h3>
-                <div>No previous searches</div>
+                <div id="recent">No previous searches.</div>
             </div>
         </div>
+
+        <div class="future-forcast"></div>
+
     </div>
     
 </body>
