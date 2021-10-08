@@ -3,12 +3,13 @@ let form = document.querySelector("form#weather-input");
 form.addEventListener("submit", (e)=>{
     e.preventDefault()
     let city = e.target["zip-input"].value;
-
-        fetch(`https://www.wttr.in/${city}?format=j1`)
+   
+    e.target.reset()
+        fetch(`https://wttr.in/${city}?format=j1`)
     .then((res)=>{
         return res.json();
     }).then((data)=>{
-        console.log(data)
+        
         let selectCity = data.nearest_area[0].areaName[0].value;
         let region = data.nearest_area[0].region[0].value;
         let country = data.nearest_area[0].country[0].value;
@@ -31,21 +32,24 @@ form.addEventListener("submit", (e)=>{
         let dayAfterMin = data.weather[2].mintempF;
 
 
-
-
-
         let display = document.querySelector(".display");
-        let futureForcast = document.querySelector(".future-forcast");
-
-
+        
+        
+        addToHistory(selectCity)
+        
+        
+        
         display.innerHTML = `
-            <h2>${selectCity}</h2>
-                <div id="city-name"><strong>Area:</strong> ${selectCity}</div>
-                <div id="state-name"><strong>Region:</strong> ${region}</div>
-                <div id="country-name"><strong>Country:</strong> ${country}</div>
-                <div id="city-temp"><strong>Currently:</strong> Feels like ${feelsLike}°F</div>
-            
+        <h2>${selectCity}</h2>
+        <div id="city-name"><strong>Area:</strong> ${selectCity}</div>
+        <div id="state-name"><strong>Region:</strong> ${region}</div>
+        <div id="country-name"><strong>Country:</strong> ${country}</div>
+        <div id="city-temp"><strong>Currently:</strong> Feels like ${feelsLike}°F</div>
+
+        <div class="future-forcast"></div>
+
         `;
+        let futureForcast = document.querySelector(".future-forcast");
 
         futureForcast.innerHTML =`
             <div id="today-temp">
@@ -72,9 +76,31 @@ form.addEventListener("submit", (e)=>{
     }).catch((err)=>{
          console.log(err);
     })
+
+    
 })
 
+function addToHistory(selectCity){
 
+
+    let ul = document.querySelector(".history ul")
+    let li = document.createElement("li")
+    let static = document.querySelector("#placeholder")
+
+    li.textContent = selectCity
+   
+   if(static){
+       static.remove();
+    }
+    
+   
+        ul.append(li)
+        
+    li.addEventListener("click", (event)=>{
+        console.log("Trigger")
+    })
+    
+}
 
     
 
