@@ -35,17 +35,24 @@ h1, #label{
 
 div.display{
     grid-area: display;
-    border: 1px solid rgb(34, 118, 139);
-    background-color: rgb(233, 232, 232);
     text-align: center;
     padding-top: 10px;
     margin-left: 10px;
     padding-bottom: 10px;
     line-height: 26pt;
 }
+#displayBackground{
+    
+    border: 1px solid rgb(34, 118, 139);
+    background-color: rgb(233, 232, 232);
+}
 
 div.history {
     grid-area: history;
+}
+
+li{
+    cursor: pointer;
 }
 
 #recent{

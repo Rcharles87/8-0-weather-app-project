@@ -2,10 +2,43 @@ let form = document.querySelector("form#weather-input");
 
 form.addEventListener("submit", (e)=>{
     e.preventDefault()
-    let city = e.target["zip-input"].value;
-   
+    let userInput = e.target["zip-input"].value;
+    let city = userInput[0].toUpperCase() + userInput.slice(1);
+   displayInfo(city, true)
     e.target.reset()
-        fetch(`https://wttr.in/${city}?format=j1`)
+     
+})
+
+
+    function addToHistory(selectCity, currentTemp){
+        
+        let ul = document.querySelector(".history ul")
+        let li = document.createElement("li")
+        let aTag = document.createElement("a")
+    
+        let static = document.querySelector("#placeholder")
+        aTag.textContent = selectCity
+        li.textContent += ` - ${currentTemp}˚F`;
+        li.prepend(aTag)
+        if(static){
+            static.remove();
+         }
+        
+            ul.append(li)   
+     
+            
+         aTag.addEventListener("click", (event)=>{
+             console.log(event)
+             displayInfo(event.target.textContent, false)
+         })
+    }
+
+
+
+
+
+function displayInfo (city, shouldAdd){
+    fetch(`https://wttr.in/${city}?format=j1`)
     .then((res)=>{
         return res.json();
     }).then((data)=>{
@@ -34,21 +67,24 @@ form.addEventListener("submit", (e)=>{
 
         let display = document.querySelector(".display");
         
-        
-        addToHistory(selectCity)
+        if(shouldAdd){
+            addToHistory(city,feelsLike)
+
+        }
         
         
         
         display.innerHTML = `
-        <h2>${selectCity}</h2>
-        <div id="city-name"><strong>Area:</strong> ${selectCity}</div>
-        <div id="state-name"><strong>Region:</strong> ${region}</div>
-        <div id="country-name"><strong>Country:</strong> ${country}</div>
-        <div id="city-temp"><strong>Currently:</strong> Feels like ${feelsLike}°F</div>
+        <div id="displayBackground">
+            <h2>${city}</h2>
+            <div id="city-name"><strong>Area:</strong> ${city}</div>
+            <div id="state-name"><strong>Region:</strong> ${region}</div>
+            <div id="country-name"><strong>Country:</strong> ${country}</div>
+            <div id="city-temp"><strong>Currently:</strong> Feels like ${feelsLike}°F</div>
+        </div>
 
-        <div class="future-forcast"></div>
-
-        `;
+            <div class="future-forcast"></div>
+            `;
         let futureForcast = document.querySelector(".future-forcast");
 
         futureForcast.innerHTML =`
@@ -74,33 +110,8 @@ form.addEventListener("submit", (e)=>{
             </div>
         `;
     }).catch((err)=>{
-         console.log(err);
+            console.log(err);
     })
 
-    
-})
-
-function addToHistory(selectCity){
-
-
-    let ul = document.querySelector(".history ul")
-    let li = document.createElement("li")
-    let static = document.querySelector("#placeholder")
-
-    li.textContent = selectCity
-   
-   if(static){
-       static.remove();
-    }
-    
-   
-        ul.append(li)
-        
-    li.addEventListener("click", (event)=>{
-        console.log("Trigger")
-    })
-    
 }
-
-    
 
