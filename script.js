@@ -10,13 +10,14 @@ form.addEventListener("submit", (e)=>{
 })
 
 
+
     function addToHistory(selectCity, currentTemp){
         
         let ul = document.querySelector(".history ul")
         let li = document.createElement("li")
         let aTag = document.createElement("a")
-    
         let static = document.querySelector("#placeholder")
+        aTag.setAttribute("href", "#")
         aTag.textContent = selectCity
         li.textContent += ` - ${currentTemp}˚F`;
         li.prepend(aTag)
@@ -28,7 +29,6 @@ form.addEventListener("submit", (e)=>{
      
             
          aTag.addEventListener("click", (event)=>{
-             console.log(event)
              displayInfo(event.target.textContent, false)
          })
     }

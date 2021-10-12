@@ -10,16 +10,27 @@
 </head>
 <body>
     <div id="main">
-        <div id="header">
-
-            <h1>Weather App</h1>
-            <form id="weather-input">
-                <label for="zip-input" id="label">Pick a Location</label>
-                <input type="text" id="zip-input"/>
-                <input type="submit" value="Get Weather"/>  
-            </form>
+        <div id="upperContainer">
+        <!-- <div id="navBackground"> -->
+            <nav> 
+                <img src="assets/navbarLogo.png" alt="logo">
+                <div id="maps">Maps</div>  
+                <div id="news">News</div>
+                <div id="severe-weather">SevereWeather</div>
+                <div id="more">More</div>   
+            </nav>
+        <!-- </div> -->
+            <div id="header">
+                
+                <h1>Find Weather by Location</h1>
+                <form id="weather-input">
+                    <label for="zip-input" id="label"></label>
+                    <input type="text" id="zip-input" placeholder="Pick a Location"/>
+                    <input type="submit" value="Get Weather"/>  
+                </form>
+            </div>
         </div>
-
+            
 
         <div class="display">
             <div>Choose a location to view weather.</div>
@@ -34,9 +45,12 @@
               </ul>
         </div>
         
-        <div class="future-forcast"></div>
 
     </div>
+
+    <footer> <img src="assets/footerLogo.png" alt="footerLogo">
+        <div>Terms of use | Privacy Policy | Cookie Policy | Tag Disclosure | Do Not Sell My Data  </div>
+    </footer>
     
 </body>
 </html>
